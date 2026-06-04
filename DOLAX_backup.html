@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOLAX | 同志社大学体育会男子ラクロス部</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600;1,700&family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:      #14233f;
+    --navy-deep: #0d1830;
+    --navy-mid:  #1b2f52;
+    --gold:      #c2902f;
+    --gold-soft: #d2a64e;
+    --cream:     #f4f1ea;
+    --paper:     #ffffff;
+    --ink:       #1b2434;
+    --muted:     #697086;
+    --line:      #e4e0d6;
+    --maxw:      1240px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans JP", sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+  /* ---- IMAGE SLOT ---- */
+  .img-slot {
+    background: rgba(255,255,255,.06);
+    border: 2px dashed rgba(255,255,255,.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .2s;
+  }
+  .img-slot.light {
+    background: rgba(20,35,63,.05);
+    border-color: rgba(20,35,63,.15);
+  }
+  .img-slot .slot-label {
+    font-family: "Oswald", sans-serif;
+    font-size: 12px;
+    letter-spacing: .1em;
+    color: rgba(255,255,255,.45);
+    pointer-events: none;
+    user-select: none;
+    text-align: center;
+    padding: 8px;
+  }
+  .img-slot.light .slot-label { color: rgba(20,35,63,.3); }
+  .img-slot.over { border-color: var(--gold); background: rgba(194,144,47,.08); }
+  .img-slot img.filled {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(244,241,234,.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+  .logo {
+    font-family: "Oswald", sans-serif; font-weight: 700;
+    font-size: 30px; letter-spacing: 1px; white-space: nowrap;
+  }
+  .logo .do  { color: var(--navy); }
+  .logo .lax { color: var(--gold); }
+  .nav-links { display: flex; gap: 40px; align-items: center; }
+  .nav-links a {
+    font-family: "Oswald", sans-serif; font-weight: 500;
+    font-size: 15px; letter-spacing: .06em;
+    color: var(--ink); position: relative; padding: 4px 0; transition: color .2s;
+  }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 0; bottom: -2px;
+    width: 0; height: 2px; background: var(--gold); transition: width .25s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+  .btn-recruit {
+    background: var(--navy); color: #fff;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 700; font-size: 14px;
+    padding: 13px 26px; letter-spacing: .08em;
+    border: 1px solid var(--navy); transition: .2s;
+  }
+  .btn-recruit:hover { background: var(--gold); border-color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+  .hamburger span { width: 28px; height: 2.5px; background: var(--navy); display: block; }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative; background: var(--navy); color: #fff;
+    overflow: hidden; border-bottom: 3px solid var(--gold);
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr; min-height: 560px;
+  }
+  .hero-left {
+    padding: 64px 0; display: flex; flex-direction: column;
+    justify-content: center; position: relative; z-index: 3;
+  }
+  .hero-right { position: relative; }
+  .hero-photo {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    border: none;
+  }
+  .hero-photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, var(--navy) 0%, rgba(20,35,63,.55) 22%, rgba(20,35,63,0) 55%);
+    pointer-events: none; z-index: 1;
+  }
+  .hero-photo .slot-label { z-index: 2; }
+  .hero-smoke-overlay {
+    position: absolute; right: -4%; bottom: -6%; width: 60%;
+    opacity: .18; z-index: 2; pointer-events: none;
+    background: radial-gradient(ellipse 60% 60% at 70% 80%, rgba(194,144,47,.35) 0%, transparent 70%);
+    height: 60%; mix-blend-mode: screen;
+  }
+  .eyebrow {
+    display: flex; align-items: center; gap: 14px;
+    font-family: "Oswald", sans-serif; font-weight: 600;
+    letter-spacing: .18em; font-size: 15px; margin-bottom: 22px;
+  }
+  .eyebrow .tick { width: 34px; height: 5px; background: var(--gold); flex-shrink: 0; }
+  .eyebrow .jp {
+    font-family: "Noto Sans JP"; font-weight: 500; font-size: 13px;
+    color: #c9d2e2; letter-spacing: .1em;
+  }
+  .hero h1 {
+    font-family: "Oswald", sans-serif; font-weight: 700;
+    font-size: 84px; line-height: .95; letter-spacing: .01em;
+  }
+  .hero .redeem {
+    font-family: "Playfair Display", serif; font-style: italic;
+    font-weight: 700; font-size: 92px; line-height: 1;
+    color: var(--gold); margin-top: 2px;
+  }
+  .hero .tagline {
+    font-family: "Shippori Mincho", serif; font-weight: 600;
+    font-size: 25px; margin-top: 24px; letter-spacing: .04em;
+  }
+  .hero-btns { display: flex; gap: 16px; margin-top: 38px; }
+  .hbtn {
+    font-family: "Noto Sans JP"; font-weight: 700; font-size: 15px;
+    padding: 15px 34px; border: 1px solid rgba(255,255,255,.6);
+    transition: .2s; letter-spacing: .06em;
+  }
+  .hbtn.solid { background: var(--navy-mid); border-color: var(--navy-mid); }
+  .hbtn.solid:hover { background: var(--gold); border-color: var(--gold); }
+  .hbtn.ghost:hover { background: #fff; color: var(--navy); }
+  .scroll-ind {
+    position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+    z-index: 4; display: flex; flex-direction: column; align-items: center;
+    gap: 12px; color: #c9d2e2;
+  }
+  .scroll-ind span {
+    writing-mode: vertical-rl; font-family: "Oswald";
+    letter-spacing: .3em; font-size: 13px;
+  }
+  .scroll-ind .ar { width: 1px; height: 46px; background: #c9d2e2; }
+
+  /* ============ STATS ============ */
+  .stats { background: var(--navy-deep); color: #fff; border-bottom: 3px solid var(--gold); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); }
+  .stat { padding: 34px 24px; text-align: center; position: relative; }
+  .stat:not(:last-child)::after {
+    content: ""; position: absolute; right: 0; top: 24%;
+    height: 52%; width: 1px; background: rgba(255,255,255,.16);
+  }
+  .stat .num {
+    font-family: "Oswald", sans-serif; font-weight: 700;
+    font-size: 46px; line-height: 1;
+  }
+  .stat .num small { font-size: 24px; font-weight: 600; }
+  .stat .lab { font-size: 13px; color: #aeb8cc; margin-top: 8px; letter-spacing: .08em; }
+
+  /* ============ SECTION SHELL ============ */
+  section { position: relative; }
+  .sec-pad { padding: 96px 0; }
+  .kicker {
+    font-family: "Playfair Display", serif; font-style: italic;
+    color: var(--gold); font-size: 22px; margin-bottom: 6px;
+  }
+  .sec-title {
+    font-family: "Oswald", sans-serif; font-weight: 700;
+    font-size: 42px; letter-spacing: .02em; color: var(--navy); line-height: 1.1;
+  }
+
+  /* ============ ABOUT ============ */
+  .about-grid { display: grid; grid-template-columns: 300px 1fr 360px; gap: 48px; align-items: start; }
+  .portrait-frame { position: relative; }
+  .portrait-frame .corner {
+    position: absolute; top: -14px; left: -14px;
+    width: 46px; height: 46px; background: var(--gold); z-index: 0;
+  }
+  .portrait-frame .corner-br {
+    position: absolute; bottom: -14px; right: -14px;
+    width: 46px; height: 46px; background: var(--gold); z-index: 0;
+  }
+  .portrait-frame .img-slot {
+    position: relative; z-index: 1;
+    border: 3px solid var(--navy); width: 100%; height: 380px;
+  }
+  .about-mid .tagline2 {
+    font-family: "Shippori Mincho", serif; font-weight: 600;
+    font-style: italic; color: var(--gold); font-size: 24px; margin: 14px 0 22px;
+  }
+  .about-mid p { color: #3a4154; font-size: 15.5px; margin-bottom: 14px; line-height: 2; }
+  .about-founded {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 28px; padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .about-founded .f-year {
+    font-family: "Oswald", sans-serif; font-weight: 700;
+    font-size: 28px; color: var(--navy); line-height: 1;
+  }
+  .about-founded .f-label {
+    font-size: 11px; color: var(--muted); letter-spacing: .08em;
+    line-height: 1.6; text-transform: uppercase;
+  }
+  .about-founded .f-div {
+    width: 1px; height: 36px; background: var(--line); margin: 0 8px;
+  }
+  .about-mid .btn-more {
+    display: inline-block; margin-top: 26px;
+    background: var(--navy); color: #fff; font-weight: 700;
+    font-size: 14px; padding: 13px 30px; letter-spacing: .06em; transition: .2s;
+  }
+  .about-mid .btn-more:hover { background: var(--gold); }
+  .season-card {
+    background: #eceadf; padding: 40px 36px;
+    position: relative; overflow: hidden;
+  }
+  .season-card .ssn {
+    font-family: "Playfair Display", serif; font-style: italic;
+    color: var(--gold); font-size: 18px; text-align: center;
+  }
+  .season-card .ghost {
+    position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
+    font-family: "Playfair Display", serif; font-style: italic;
+    font-weight: 700; font-size: 96px; color: rgba(20,35,63,.06);
+    white-space: nowrap; z-index: 0;
+  }
+  .season-card .big-redeem {
+    font-family: "Playfair Display", serif; font-style: italic;
+    font-weight: 700; font-size: 62px; color: var(--gold);
+    text-align: center; margin: 18px 0 30px; position: relative; z-index: 1;
+  }
+  .season-goals { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; position: relative; z-index: 1; }
+  .goal {
+    background: var(--navy); color: #fff; text-align: center;
+    padding: 20px 8px; font-family: "Shippori Mincho", serif;
+    font-weight: 700; font-size: 20px; letter-spacing: .2em;
+    border-top: 3px solid var(--gold);
+  }
+
+  /* ============ WHAT DEFINES ============ */
+  .defines { background: var(--cream); }
+  .defines-head {
+    font-family: "Oswald"; font-weight: 700; font-size: 34px;
+    letter-spacing: .12em; color: var(--navy); text-align: center; margin-bottom: 54px;
+  }
+  .defines-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: start; }
+  .cards3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .vcard {
+    background: #fff; border: 1px solid var(--line);
+    padding: 34px 26px 30px; position: relative; overflow: hidden;
+  }
+  .vcard .gn {
+    position: absolute; right: 14px; top: 6px;
+    font-family: "Oswald"; font-weight: 700; font-size: 64px;
+    color: rgba(20,35,63,.05);
+  }
+  .vcard .ico { height: 46px; color: var(--gold); margin-bottom: 22px; }
+  .vcard .ico svg { height: 46px; width: auto; }
+  .vcard h3 { font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .vcard p { font-size: 14px; color: #4a5167; line-height: 1.85; }
+  .vcard .rule { width: 54px; height: 3px; background: var(--gold); margin-top: 22px; }
+
+  /* timeline */
+  .timeline-wrap { position: relative; }
+  .timeline-wrap .ghost-do {
+    position: absolute; right: -10px; bottom: -10px;
+    font-family: "Oswald"; font-weight: 700; font-size: 120px;
+    color: rgba(20,35,63,.04); letter-spacing: .05em; z-index: 0;
+  }
+  .timeline { position: relative; padding-left: 30px; z-index: 1; }
+  .timeline::before {
+    content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px;
+    width: 3px; background: var(--gold); opacity: .5;
+  }
+  .tl-item { position: relative; margin-bottom: 26px; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -30px; top: 4px;
+    width: 13px; height: 13px; background: var(--gold);
+  }
+  .tl-item h4 {
+    font-family: "Oswald"; font-weight: 700; font-size: 18px;
+    color: var(--navy); letter-spacing: .03em;
+  }
+  .tl-item .yr { font-family: "Oswald"; color: var(--gold); }
+  .tl-item p { font-size: 13px; color: var(--muted); margin-top: 1px; }
+
+  /* ============ THE FIELD / NEWS / BECOME ============ */
+  .field-sec { background: var(--navy); color: #fff; }
+  .field-layout { display: grid; grid-template-columns: 1.05fr .95fr .8fr; gap: 30px; align-items: stretch; }
+  .blk-label {
+    display: flex; align-items: center; gap: 12px;
+    font-family: "Oswald"; font-weight: 700; font-size: 22px;
+    letter-spacing: .12em; margin-bottom: 22px;
+  }
+  .blk-label .lcorner {
+    width: 22px; height: 22px;
+    border-left: 3px solid var(--gold); border-top: 3px solid var(--gold);
+  }
+  .gallery {
+    display: grid; grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto; gap: 10px;
+  }
+  .gcell { position: relative; overflow: hidden; }
+  .gcell .cap {
+    position: absolute; left: 0; bottom: 0;
+    background: var(--gold); color: #fff; font-size: 12px;
+    font-weight: 700; padding: 5px 12px; letter-spacing: .06em;
+    z-index: 2; white-space: nowrap;
+  }
+  .gcell.big { grid-column: 1 / -1; }
+  .gcell.big .img-slot { height: 172px; }
+  .gcell.sm  .img-slot { height: 124px; }
+  .gcell .img-slot { width: 100%; }
+
+  .news-card {
+    background: #fff; color: var(--ink);
+    padding: 26px 24px; display: flex; flex-direction: column;
+  }
+  .news-card .nc-head {
+    text-align: center; font-family: "Oswald"; font-weight: 700;
+    letter-spacing: .1em; font-size: 19px; color: var(--navy); margin-bottom: 20px;
+  }
+  .news-item {
+    display: grid; grid-template-columns: 96px 1fr; gap: 16px;
+    padding: 16px 0; border-bottom: 1px solid var(--line); align-items: center;
+  }
+  .news-item .img-slot { width: 96px; height: 68px; }
+  .news-item .tag {
+    font-family: "Oswald"; font-weight: 700; font-size: 11px;
+    letter-spacing: .1em; color: var(--gold);
+  }
+  .news-item h5 {
+    font-size: 14px; font-weight: 700; color: var(--navy);
+    line-height: 1.5; margin: 3px 0 5px;
+  }
+  .news-item .date { font-size: 12px; color: var(--muted); font-family: "Oswald"; }
+  .news-all {
+    margin-top: auto; padding-top: 18px; text-align: right;
+    font-family: "Oswald"; font-weight: 600; font-size: 14px; color: var(--navy);
+    display: flex; align-items: center; justify-content: flex-end; gap: 8px;
+  }
+
+  .become {
+    position: relative; background: var(--navy-deep); overflow: hidden;
+    padding: 34px 30px; display: flex; flex-direction: column;
+    justify-content: center; border: 1px solid rgba(255,255,255,.08);
+  }
+  .become .ghost-do {
+    position: absolute; right: -6px; bottom: 8px;
+    font-family: "Oswald"; font-weight: 700; font-size: 80px;
+    color: rgba(255,255,255,.05); writing-mode: vertical-rl; letter-spacing: .1em;
+  }
+  .become h3 {
+    font-family: "Oswald"; font-weight: 700; font-size: 32px;
+    letter-spacing: .04em; line-height: 1.1; position: relative; z-index: 1;
+  }
+  .become .lead {
+    font-weight: 700; font-size: 15px; margin: 16px 0 6px;
+    position: relative; z-index: 1;
+  }
+  .become p { font-size: 13px; color: #b9c2d6; position: relative; z-index: 1; }
+  .become-btns {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-top: 24px; position: relative; z-index: 1;
+  }
+  .become-btns a {
+    text-align: center; font-weight: 700; font-size: 14px;
+    padding: 14px; letter-spacing: .06em; transition: .2s;
+  }
+  .become-btns .gold { background: var(--gold); color: #1d1b10; }
+  .become-btns .gold:hover { background: var(--gold-soft); }
+  .become-btns .ghost-btn { border: 1px solid rgba(255,255,255,.5); color: #fff; }
+  .become-btns .ghost-btn:hover { background: #fff; color: var(--navy); }
+
+  /* ============ FOOTER ============ */
+  footer { background: var(--navy-deep); color: #cdd5e4; }
+  .foot-grid {
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+    gap: 40px; padding: 72px 0 48px;
+  }
+  .foot-logo {
+    font-family: "Oswald"; font-weight: 700;
+    font-size: 30px; letter-spacing: 1px; margin-bottom: 16px;
+  }
+  .foot-logo .do  { color: #fff; }
+  .foot-logo .lax { color: var(--gold); }
+  .foot-brand p { font-size: 13px; color: #97a1b8; line-height: 1.9; }
+  .foot-soc { display: flex; gap: 14px; margin-top: 24px; }
+  .foot-soc a {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(255,255,255,.22);
+    display: flex; align-items: center; justify-content: center;
+    transition: .2s; color: #cdd5e4;
+  }
+  .foot-soc a:hover { background: var(--gold); border-color: var(--gold); color: #1d1b10; }
+  .foot-soc svg { width: 17px; height: 17px; }
+  .foot-col h4 {
+    font-family: "Oswald"; font-weight: 600; letter-spacing: .14em;
+    font-size: 15px; color: #fff; margin-bottom: 18px;
+  }
+  .foot-col a {
+    display: block; font-size: 13.5px; color: #9aa4ba;
+    margin-bottom: 11px; transition: .2s;
+  }
+  .foot-col a:hover { color: var(--gold); }
+  .foot-contact .row { font-size: 13px; color: #9aa4ba; margin-bottom: 13px; line-height: 1.7; }
+  .foot-contact .row b {
+    color: var(--gold); font-family: "Oswald"; font-weight: 600;
+    letter-spacing: .06em; margin-right: 8px;
+  }
+  .copyright {
+    border-top: 1px solid rgba(255,255,255,.1);
+    text-align: center; padding: 22px;
+    font-size: 12px; color: #7d889f; letter-spacing: .04em;
+  }
+
+  /* ============ ROSTER ============ */
+  .roster-sec { background: var(--paper); }
+  .roster-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 52px; }
+  .roster-header .sec-title { margin-top: 4px; }
+  .position-tabs { display: flex; gap: 0; }
+  .pos-tab {
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .1em; padding: 10px 20px; cursor: pointer;
+    border: 1px solid var(--line); color: var(--muted); background: transparent;
+    transition: .2s; margin-left: -1px;
+  }
+  .pos-tab.active, .pos-tab:hover { background: var(--navy); color: #fff; border-color: var(--navy); z-index: 1; }
+  .roster-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+  .player-card { position: relative; overflow: hidden; background: var(--cream); }
+  .player-card .player-photo { width: 100%; height: 220px; }
+  .player-card .player-num {
+    position: absolute; top: 12px; left: 12px;
+    font-family: "Oswald", sans-serif; font-weight: 700; font-size: 22px;
+    color: #fff; line-height: 1;
+    text-shadow: 0 1px 6px rgba(0,0,0,.5);
+  }
+  .player-card .player-num span { color: var(--gold); font-size: 13px; font-weight: 600; }
+  .player-card .player-info { padding: 14px 16px 18px; }
+  .player-card .player-pos {
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px;
+    letter-spacing: .14em; color: var(--gold); margin-bottom: 4px;
+  }
+  .player-card .player-name {
+    font-family: "Noto Sans JP", sans-serif; font-weight: 700;
+    font-size: 15px; color: var(--navy); line-height: 1.3;
+  }
+  .player-card .player-meta { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .player-card::after {
+    content: ""; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px; background: var(--gold); transform: scaleX(0);
+    transform-origin: left; transition: transform .25s;
+  }
+  .player-card:hover::after { transform: scaleX(1); }
+  .roster-more {
+    text-align: center; margin-top: 44px;
+  }
+  .roster-more a {
+    display: inline-block; font-family: "Oswald", sans-serif; font-weight: 600;
+    font-size: 14px; letter-spacing: .1em; padding: 13px 40px;
+    border: 2px solid var(--navy); color: var(--navy); transition: .2s;
+  }
+  .roster-more a:hover { background: var(--navy); color: #fff; }
+
+  /* ============ SCHEDULE ============ */
+  .schedule-sec { background: var(--navy); color: #fff; }
+  .schedule-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; }
+  .schedule-header .kicker { color: var(--gold-soft); }
+  .schedule-header .sec-title { color: #fff; }
+  .season-tabs { display: flex; gap: 0; }
+  .ssn-tab {
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .1em; padding: 10px 24px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.25); color: rgba(255,255,255,.5);
+    background: transparent; transition: .2s; margin-left: -1px;
+  }
+  .ssn-tab.active, .ssn-tab:hover {
+    background: var(--gold); color: #1d1b10; border-color: var(--gold); z-index: 1;
+  }
+  .schedule-table { width: 100%; border-collapse: collapse; }
+  .schedule-table thead tr {
+    border-bottom: 2px solid var(--gold);
+  }
+  .schedule-table th {
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: .12em; color: var(--gold); padding: 10px 16px;
+    text-align: left; white-space: nowrap;
+  }
+  .schedule-table td {
+    font-size: 14px; padding: 16px 16px; color: #c9d2e2;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .schedule-table tr:hover td { background: rgba(255,255,255,.04); }
+  .schedule-table .td-date {
+    font-family: "Oswald", sans-serif; font-weight: 500;
+    font-size: 14px; color: #fff; white-space: nowrap;
+  }
+  .schedule-table .td-opponent { font-weight: 700; color: #fff; }
+  .schedule-table .td-venue { font-size: 12px; color: var(--muted); }
+  .badge {
+    display: inline-block; font-family: "Oswald", sans-serif;
+    font-weight: 700; font-size: 11px; letter-spacing: .1em;
+    padding: 3px 10px; min-width: 52px; text-align: center;
+  }
+  .badge.win  { background: var(--gold); color: #1d1b10; }
+  .badge.lose { background: rgba(255,255,255,.12); color: #b9c2d6; }
+  .badge.tbd  { border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.4); }
+  .schedule-table .td-score {
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 16px; color: #fff;
+  }
+
+  /* ============ SPONSOR ============ */
+  .sponsor-sec { background: var(--cream); border-top: 1px solid var(--line); }
+  .sponsor-inner { text-align: center; }
+  .sponsor-inner .kicker { display: inline-block; margin-bottom: 6px; }
+  .sponsor-inner .sec-title { color: var(--navy); margin-bottom: 10px; }
+  .sponsor-inner .sponsor-sub {
+    font-size: 14px; color: var(--muted); margin-bottom: 56px; letter-spacing: .04em;
+  }
+  .sponsor-tier { margin-bottom: 48px; }
+  .tier-label {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: "Oswald", sans-serif; font-weight: 600;
+    font-size: 13px; letter-spacing: .18em; color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .tier-label::before, .tier-label::after {
+    content: ""; flex: 1; height: 1px; background: var(--line); min-width: 40px;
+  }
+  .sponsor-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .sponsor-logo {
+    border: 1px solid var(--line); background: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .sponsor-logo:hover { border-color: var(--gold); box-shadow: 0 2px 12px rgba(194,144,47,.15); }
+  .sponsor-logo.gold-tier  { width: 280px; height: 100px; }
+  .sponsor-logo.silver-tier { width: 200px; height: 80px; }
+  .sponsor-logo.support-tier { width: 150px; height: 64px; }
+  .sponsor-logo .img-slot.light { width: 100%; height: 100%; border: none; border-radius: 0; }
+  .sponsor-logo .logo-name {
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .08em; color: var(--muted); text-align: center; padding: 8px;
+  }
+  .sponsor-cta {
+    margin-top: 40px; padding: 32px 0 0;
+    border-top: 1px solid var(--line);
+    font-size: 14px; color: var(--muted);
+  }
+  .sponsor-cta a {
+    display: inline-block; margin-top: 14px;
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: .1em; padding: 12px 36px;
+    background: var(--navy); color: #fff; transition: .2s;
+  }
+  .sponsor-cta a:hover { background: var(--gold); }
+
+  /* ============ PHOTO ARCHIVE ============ */
+  .archive-sec { background: var(--navy-deep); color: #fff; overflow: hidden; }
+  .archive-head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .archive-head .kicker { color: var(--gold-soft); }
+  .archive-head .sec-title { color: #fff; margin-top: 4px; }
+  .archive-tabs { display: flex; gap: 0; }
+  .arc-tab {
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .12em; padding: 10px 22px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.45);
+    background: transparent; transition: .2s; margin-left: -1px;
+  }
+  .arc-tab.active, .arc-tab:hover {
+    background: var(--gold); color: #1d1b10; border-color: var(--gold); z-index: 1;
+  }
+
+  /* masonry grid */
+  .archive-masonry {
+    columns: 4; column-gap: 12px;
+  }
+  .arc-item {
+    break-inside: avoid; margin-bottom: 12px;
+    position: relative; overflow: hidden; cursor: pointer;
+    display: block;
+  }
+  .arc-item .img-slot {
+    width: 100%; border: none; border-radius: 0;
+    background: rgba(255,255,255,.04);
+  }
+  .arc-item.h-tall  .img-slot { height: 300px; }
+  .arc-item.h-mid   .img-slot { height: 210px; }
+  .arc-item.h-short .img-slot { height: 150px; }
+  .arc-item .arc-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,24,48,.88) 0%, transparent 55%);
+    opacity: 0; transition: opacity .25s;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 14px 16px;
+  }
+  .arc-item:hover .arc-overlay { opacity: 1; }
+  .arc-item .arc-year {
+    font-family: "Oswald", sans-serif; font-weight: 700; font-size: 11px;
+    letter-spacing: .14em; color: var(--gold); margin-bottom: 3px;
+  }
+  .arc-item .arc-caption {
+    font-size: 13px; font-weight: 700; color: #fff; line-height: 1.4;
+  }
+  .arc-item .arc-expand {
+    position: absolute; top: 12px; right: 12px;
+    width: 30px; height: 30px; background: rgba(194,144,47,.85);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity .25s;
+  }
+  .arc-item:hover .arc-expand { opacity: 1; }
+  .arc-item .arc-expand svg { width: 14px; height: 14px; color: #fff; }
+
+  /* lightbox */
+  .lb-overlay {
+    position: fixed; inset: 0; background: rgba(10,16,32,.95);
+    z-index: 200; display: none; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .lb-overlay.open { display: flex; }
+  .lb-inner { position: relative; max-width: 900px; width: 100%; }
+  .lb-img { width: 100%; max-height: 80vh; object-fit: contain; display: block; }
+  .lb-img-placeholder {
+    width: 100%; height: 60vh;
+    background: rgba(255,255,255,.05);
+    border: 2px dashed rgba(255,255,255,.15);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.3); font-family: "Oswald"; letter-spacing: .1em;
+    font-size: 15px;
+  }
+  .lb-caption {
+    margin-top: 14px; font-size: 14px; color: #c9d2e2;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .lb-caption .lb-year {
+    font-family: "Oswald"; font-weight: 700; font-size: 13px;
+    color: var(--gold); letter-spacing: .1em;
+  }
+  .lb-close {
+    position: absolute; top: -44px; right: 0; background: none; border: none;
+    color: #fff; cursor: pointer; font-family: "Oswald"; font-size: 14px;
+    letter-spacing: .1em; display: flex; align-items: center; gap: 8px;
+    opacity: .7; transition: opacity .2s;
+  }
+  .lb-close:hover { opacity: 1; }
+  .lb-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,.1); border: none; color: #fff;
+    width: 44px; height: 44px; cursor: pointer; font-size: 20px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .lb-nav:hover { background: var(--gold); color: #1d1b10; }
+  .lb-nav.prev { left: -56px; }
+  .lb-nav.next { right: -56px; }
+
+  .archive-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 36px; padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,.1);
+  }
+  .arc-count {
+    font-family: "Oswald"; font-size: 13px; color: rgba(255,255,255,.4);
+    letter-spacing: .08em;
+  }
+  .arc-count span { color: var(--gold); font-weight: 700; }
+  .arc-more-btn {
+    font-family: "Oswald"; font-weight: 600; font-size: 14px;
+    letter-spacing: .1em; padding: 12px 36px;
+    border: 1px solid rgba(255,255,255,.3); color: #fff;
+    background: transparent; cursor: pointer; transition: .2s;
+    text-decoration: none; display: inline-block;
+  }
+  .arc-more-btn:hover { background: var(--gold); border-color: var(--gold); color: #1d1b10; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1000px) {
+    .about-grid       { grid-template-columns: 1fr; }
+    .portrait-frame .img-slot { height: 300px; max-width: 360px; }
+    .defines-layout   { grid-template-columns: 1fr; }
+    .field-layout     { grid-template-columns: 1fr; }
+    .hero-grid        { grid-template-columns: 1fr; }
+    .hero-right       { min-height: 340px; }
+    .hero-left        { padding: 48px 0; }
+    .hero h1          { font-size: 64px; }
+    .hero .redeem     { font-size: 66px; }
+    .roster-grid      { grid-template-columns: repeat(3, 1fr); }
+    .archive-masonry  { columns: 3; }
+    .lb-nav.prev      { left: -40px; }
+    .lb-nav.next      { right: -40px; }
+  }
+  @media (max-width: 760px) {
+    .nav-links  { display: none; }
+    .hamburger  { display: flex; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat:nth-child(2)::after { display: none; }
+    .cards3     { grid-template-columns: 1fr; }
+    .foot-grid  { grid-template-columns: 1fr 1fr; }
+    .hero h1    { font-size: 48px; }
+    .hero .redeem { font-size: 50px; }
+    .sec-title  { font-size: 32px; }
+    .roster-grid { grid-template-columns: repeat(2, 1fr); }
+    .roster-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .schedule-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .schedule-table th:nth-child(3),
+    .schedule-table td:nth-child(3) { display: none; }
+    .sponsor-logo.gold-tier   { width: 200px; height: 80px; }
+    .sponsor-logo.silver-tier { width: 150px; height: 68px; }
+    .archive-masonry  { columns: 2; }
+    .archive-head     { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .lb-nav           { display: none; }
+  }
+  @media (max-width: 480px) {
+    .foot-grid { grid-template-columns: 1fr; }
+    .wrap { padding: 0 20px; }
+    .roster-grid { grid-template-columns: repeat(2, 1fr); }
+    .archive-masonry { columns: 2; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo"><span class="do">DO</span><span class="lax">LAX</span></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#history">History</a>
+      <a href="#roster">Roster</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#field">Gallery</a>
+      <a href="#archive">Archive</a>
+      <a href="#news">News</a>
+    </nav>
+    <a href="#become" class="btn-recruit">新入部員募集</a>
+    <div class="hamburger" onclick="this.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="eyebrow">
+          <span class="tick"></span>
+          KANSAI DIVISION 1
+          <span class="jp">｜関西1部リーグ</span>
+        </div>
+        <h1>DOLAX 2026</h1>
+        <div class="redeem">REDEEM</div>
+        <div class="tagline">組織を愛し、社会から愛される</div>
+        <div class="hero-btns">
+          <a href="#about"  class="hbtn solid">チームを知る</a>
+          <a href="#become" class="hbtn ghost">入部について</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="img-slot hero-photo" data-slot="hero-photo">
+          <span class="slot-label">試合写真をドロップ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-smoke-overlay"></div>
+  <div class="scroll-ind"><span>Scroll</span><div class="ar"></div></div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="num">1<small>部</small></div>
+        <div class="lab">関西リーグ所属</div>
+      </div>
+      <div class="stat">
+        <div class="num">130<small>+</small></div>
+        <div class="lab">部員数</div>
+      </div>
+      <div class="stat">
+        <div class="num">2024</div>
+        <div class="lab">ファイナル3進出</div>
+      </div>
+      <div class="stat">
+        <div class="num">POL <small>獲得</small></div>
+        <div class="lab">2025目標</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec-pad" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="portrait-frame">
+        <div class="corner"></div>
+        <div class="corner-br"></div>
+        <div class="img-slot light" data-slot="portrait" style="height:380px;">
+          <span class="slot-label">選手ポートレート</span>
+        </div>
+      </div>
+      <div class="about-mid">
+        <div class="kicker">About Us</div>
+        <h2 class="sec-title">PLAY WITH PRIDE</h2>
+        <div class="tagline2">本気の先に、最高の景色がある。</div>
+        <p>1989年に創部した同志社大学体育会男子ラクロス部。関西1部リーグの舞台で、競技力と人間力の両輪を磨き続けてきた。</p>
+        <p>私たちが追い求めるのは勝利だけではない。チームを愛し、仲間を信頼し、社会に誇れる選手であること。そのすべてを体現した先に、本当の頂点がある。</p>
+        <p>2026年、DOLAXは関西制覇とPOL獲得を掲げ、新たな歴史へ挑む。</p>
+        <div class="about-founded">
+          <div class="f-year">1989</div>
+          <div class="f-label">創部<br>Founded</div>
+          <div class="f-div"></div>
+          <div class="f-year">130<span style="font-size:16px;font-weight:500;">+</span></div>
+          <div class="f-label">部員数<br>Members</div>
+          <div class="f-div"></div>
+          <div class="f-year">1<span style="font-size:16px;font-weight:500;">部</span></div>
+          <div class="f-label">関西リーグ<br>Division</div>
+        </div>
+        <a href="#history" class="btn-more">チームの歴史を見る</a>
+      </div>
+      <div class="season-card">
+        <div class="ssn">2026 Season</div>
+        <div class="ghost">REDEEM</div>
+        <div class="big-redeem">REDEEM</div>
+        <div class="season-goals">
+          <div class="goal">関西制覇</div>
+          <div class="goal">POL 獲得</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT DEFINES DOLAX -->
+<section class="defines sec-pad" id="history">
+  <div class="wrap">
+    <div class="defines-head">WHAT DEFINES DOLAX</div>
+    <div class="defines-layout">
+      <div class="cards3">
+        <!-- card 1 -->
+        <div class="vcard">
+          <div class="gn">01</div>
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4">
+              <path d="M14 6h20v8a10 10 0 0 1-20 0V6Z" fill="currentColor" stroke="none"/>
+              <path d="M14 9H7a6 6 0 0 0 7 9M34 9h7a6 6 0 0 1-7 9"/>
+              <path d="M18 42c0-4 2-6 6-6s6 2 6 6" fill="currentColor" stroke="none"/>
+              <line x1="24" y1="24" x2="24" y2="32" stroke="currentColor" stroke-width="2.4"/>
+              <line x1="16" y1="42" x2="32" y2="42" stroke="currentColor" stroke-width="2.4"/>
+            </svg>
+          </div>
+          <h3>高い競技レベル</h3>
+          <p>1部リーグで戦える技術と戦術を追求し、勝利にこだわります。</p>
+          <div class="rule"></div>
+        </div>
+        <!-- card 2 -->
+        <div class="vcard">
+          <div class="gn">02</div>
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="currentColor">
+              <circle cx="16" cy="14" r="6"/>
+              <circle cx="32" cy="14" r="6"/>
+              <path d="M6 40c0-7 4.5-12 10-12s10 5 10 12H6Z"/>
+              <path d="M22 40c0-7 4.5-12 10-12s10 5 10 12H22Z"/>
+            </svg>
+          </div>
+          <h3>仲間との絆</h3>
+          <p>互いに信頼し、支え合うことで、強い組織を築きます。</p>
+          <div class="rule"></div>
+        </div>
+        <!-- card 3 -->
+        <div class="vcard">
+          <div class="gn">03</div>
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="currentColor">
+              <path d="M24 12C19 8 11 8 6 10v26c5-2 13-2 18 2 5-4 13-4 18-2V10c-5-2-13-2-18 2Z"/>
+              <path d="M24 12v28" stroke="#fff" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <h3>人間としての成長</h3>
+          <p>ラクロスを通じて、社会で活躍できる人間力を養います。</p>
+          <div class="rule"></div>
+        </div>
+      </div>
+
+      <!-- TIMELINE -->
+      <div class="timeline-wrap">
+        <div class="ghost-do">DO LAX</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <h4>創部</h4>
+            <p>1989年 創部</p>
+          </div>
+          <div class="tl-item">
+            <h4>全日出場</h4>
+            <p>2001年 全日準決勝進出</p>
+          </div>
+          <div class="tl-item">
+            <h4>1部昇格</h4>
+            <p>2020年 7年ぶりに1部リーグへ昇格</p>
+          </div>
+          <div class="tl-item">
+            <h4><span class="yr">2023</span> ファイナル3進出</h4>
+            <p>全日本学生選手権でファイナル3進出</p>
+          </div>
+          <div class="tl-item">
+            <h4><span class="yr">2026</span> 関西制覇へ</h4>
+            <p>新たな歴史を刻むシーズンへ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROSTER -->
+<section class="roster-sec sec-pad" id="roster">
+  <div class="wrap">
+    <div class="roster-header">
+      <div>
+        <div class="kicker">Members</div>
+        <h2 class="sec-title">ROSTER 2026</h2>
+      </div>
+      <div class="position-tabs">
+        <button class="pos-tab active" onclick="filterRoster('all', this)">ALL</button>
+        <button class="pos-tab" onclick="filterRoster('AT', this)">AT</button>
+        <button class="pos-tab" onclick="filterRoster('MF', this)">MF</button>
+        <button class="pos-tab" onclick="filterRoster('DF', this)">DF</button>
+        <button class="pos-tab" onclick="filterRoster('GK', this)">GK</button>
+      </div>
+    </div>
+    <div class="roster-grid" id="rosterGrid">
+      <!-- AT -->
+      <div class="player-card" data-pos="AT">
+        <div class="img-slot light player-photo" data-slot="p1"><span class="slot-label">選手写真</span></div>
+        <div class="player-num">#1 <span>AT</span></div>
+        <div class="player-info">
+          <div class="player-pos">ATTACK</div>
+          <div class="player-name">山田 太郎</div>
+          <div class="player-meta">4年 / 同志社香里高校</div>
+        </div>
+      </div>
+      <div class="player-card" data-pos="AT">
+        <div class="img-slot light player-photo" data-slot="p2"><span class="slot-label">選手写真</span></div>
+        <div class="player-num">#5 <span>AT</span></div>
+        <div class="player-info">
+          <div class="player-pos">ATTACK</div>
+          <div class="player-name">鈴木 健二</div>
+          <div class="player-meta">3年 / 立命館高校</div>
+        </div>
+      </div>
+      <!-- MF -->
+      <div class="player-card" data-pos="MF">
+        <div class="img-slot light player-photo" data-slot="p3"><span class="slot-label">選手写真</span></div>
+        <div class="player-num">#10 <span>MF</span></div>
+        <div class="player-info">
+          <div class="player-pos">MIDFIELD</div>
+          <div class="player-name">田中 翔</div>
+          <div class="player-meta">4年 / 洛星高校</div>
+        </div>
+      </div>
+      <div class="player-card" data-pos="MF">
+        <div class="img-slot light player-photo" data-slot="p4"><span class="slot-label">選手写真</span></div>
+        <div class="player-num">#14 <span>MF</span></div>
+        <div class="player-info">
+          <div class="player-pos">MIDFIELD</div>
+          <div class="player-name">中村 悠斗</div>
+          <div class="player-meta">3年 / 大阪星光学院</div>
+        </div>
+      </div>
+      <div class="player-card" data-pos="MF">
+        <div class="img-slot light player-photo" data-slot="p5"><span class="slot-label">選手写真</span></div>
+        <div class="player-num">#18 <span>MF</span></div>
+        <div class="player-info">
+          <div class="player-pos">MIDFIELD</div>
+          <div class="player-name">小林 大輝</div>
+          <div class="player-meta">2年 / 桃山学院高校</div>
+        </div>
+      </div>
+      <!-- DF -->
+      <div class="player-card" data-pos="DF">
+        <div class="img-slot light player-photo" data-slot="p6"><span class="slot-label">選手写真</span></div>
+        <div class="player-num">#22 <span>DF</span></div>
+        <div class="player-info">
+          <div class="player-pos">DEFENSE</div>
+          <div class="player-name">伊藤 涼介</div>
+          <div class="player-meta">4年 / 西大和学園高校</div>
+        </div>
+      </div>
+      <div class="player-card" data-pos="DF">
+        <div class="img-slot light player-photo" data-slot="p7"><span class="slot-label">選手写真</span></div>
+        <div class="player-num">#25 <span>DF</span></div>
+        <div class="player-info">
+          <div class="player-pos">DEFENSE</div>
+          <div class="player-name">渡辺 隼人</div>
+          <div class="player-meta">3年 / 清風高校</div>
+        </div>
+      </div>
+      <div class="player-card" data-pos="DF">
+        <div class="img-slot light player-photo" data-slot="p8"><span class="slot-label">選手写真</span></div>
+        <div class="player-num">#28 <span>DF</span></div>
+        <div class="player-info">
+          <div class="player-pos">DEFENSE</div>
+          <div class="player-name">加藤 颯</div>
+          <div class="player-meta">2年 / 帝塚山高校</div>
+        </div>
+      </div>
+      <!-- GK -->
+      <div class="player-card" data-pos="GK">
+        <div class="img-slot light player-photo" data-slot="p9"><span class="slot-label">選手写真</span></div>
+        <div class="player-num">#30 <span>GK</span></div>
+        <div class="player-info">
+          <div class="player-pos">GOALIE</div>
+          <div class="player-name">松本 拓海</div>
+          <div class="player-meta">4年 / 同志社高校</div>
+        </div>
+      </div>
+      <div class="player-card" data-pos="AT">
+        <div class="img-slot light player-photo" data-slot="p10"><span class="slot-label">選手写真</span></div>
+        <div class="player-num">#7 <span>AT</span></div>
+        <div class="player-info">
+          <div class="player-pos">ATTACK</div>
+          <div class="player-name">西田 光</div>
+          <div class="player-meta">2年 / 近畿大学附属高校</div>
+        </div>
+      </div>
+    </div>
+    <div class="roster-more"><a href="#">全選手一覧を見る →</a></div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule-sec sec-pad" id="schedule">
+  <div class="wrap">
+    <div class="schedule-header">
+      <div>
+        <div class="kicker">2026 Season</div>
+        <h2 class="sec-title">SCHEDULE &amp; RESULTS</h2>
+      </div>
+      <div class="season-tabs">
+        <button class="ssn-tab active" onclick="filterSchedule('spring', this)">春季リーグ</button>
+        <button class="ssn-tab" onclick="filterSchedule('fall', this)">秋季リーグ</button>
+        <button class="ssn-tab" onclick="filterSchedule('all', this)">全試合</button>
+      </div>
+    </div>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>DATE</th>
+          <th>OPPONENT</th>
+          <th>VENUE</th>
+          <th>RESULT</th>
+          <th>SCORE</th>
+        </tr>
+      </thead>
+      <tbody id="scheduleBody">
+        <tr data-season="spring">
+          <td class="td-date">4.13 Sun</td>
+          <td class="td-opponent">関西学院大学</td>
+          <td class="td-venue">西京極陸上競技場</td>
+          <td><span class="badge win">WIN</span></td>
+          <td class="td-score">12 – 8</td>
+        </tr>
+        <tr data-season="spring">
+          <td class="td-date">4.20 Sun</td>
+          <td class="td-opponent">立命館大学</td>
+          <td class="td-venue">立命館びわこ・くさつキャンパス</td>
+          <td><span class="badge win">WIN</span></td>
+          <td class="td-score">9 – 7</td>
+        </tr>
+        <tr data-season="spring">
+          <td class="td-date">5.04 Sun</td>
+          <td class="td-opponent">大阪大学</td>
+          <td class="td-venue">万博記念競技場</td>
+          <td><span class="badge lose">LOSE</span></td>
+          <td class="td-score">6 – 11</td>
+        </tr>
+        <tr data-season="spring">
+          <td class="td-date">5.18 Sun</td>
+          <td class="td-opponent">京都大学</td>
+          <td class="td-venue">宝ヶ池球技場</td>
+          <td><span class="badge win">WIN</span></td>
+          <td class="td-score">14 – 6</td>
+        </tr>
+        <tr data-season="fall">
+          <td class="td-date">9.07 Sun</td>
+          <td class="td-opponent">神戸大学</td>
+          <td class="td-venue">西京極陸上競技場</td>
+          <td><span class="badge tbd">TBD</span></td>
+          <td class="td-score">–</td>
+        </tr>
+        <tr data-season="fall">
+          <td class="td-date">9.21 Sun</td>
+          <td class="td-opponent">関西大学</td>
+          <td class="td-venue">関西大学千里山キャンパス</td>
+          <td><span class="badge tbd">TBD</span></td>
+          <td class="td-score">–</td>
+        </tr>
+        <tr data-season="fall">
+          <td class="td-date">10.05 Sun</td>
+          <td class="td-opponent">同志社大学 B</td>
+          <td class="td-venue">今出川フィールド</td>
+          <td><span class="badge tbd">TBD</span></td>
+          <td class="td-score">–</td>
+        </tr>
+        <tr data-season="fall">
+          <td class="td-date">10.26 Sun</td>
+          <td class="td-opponent">立命館大学</td>
+          <td class="td-venue">西京極陸上競技場</td>
+          <td><span class="badge tbd">TBD</span></td>
+          <td class="td-score">–</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- THE FIELD / NEWS / BECOME -->
+<section class="field-sec sec-pad" id="field">
+  <div class="wrap">
+    <div class="field-layout">
+
+      <!-- GALLERY -->
+      <div>
+        <div class="blk-label"><span class="lcorner"></span>THE FIELD</div>
+        <div class="gallery">
+          <div class="gcell big">
+            <div class="img-slot" data-slot="g-match"><span class="slot-label">Match Day</span></div>
+            <span class="cap">Match Day</span>
+          </div>
+          <div class="gcell sm">
+            <div class="img-slot" data-slot="g-train"><span class="slot-label">Training</span></div>
+            <span class="cap">Training</span>
+          </div>
+          <div class="gcell sm">
+            <div class="img-slot" data-slot="g-huddle"><span class="slot-label">Team Huddle</span></div>
+            <span class="cap">Team Huddle</span>
+          </div>
+          <div class="gcell sm">
+            <div class="img-slot" data-slot="g-prac"><span class="slot-label">Practice</span></div>
+            <span class="cap">Practice</span>
+          </div>
+          <div class="gcell sm">
+            <div class="img-slot" data-slot="g-vic"><span class="slot-label">Victory</span></div>
+            <span class="cap">Victory</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEWS -->
+      <div class="news-card" id="news">
+        <div class="nc-head">NEWS &amp; UPDATES</div>
+        <div class="news-item">
+          <div class="img-slot light" data-slot="n1"><span class="slot-label">NEWS</span></div>
+          <div>
+            <div class="tag">NEWS</div>
+            <h5>新入部員向け説明会を開催します</h5>
+            <div class="date">2024.04.20</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="img-slot light" data-slot="n2"><span class="slot-label">GAME</span></div>
+          <div>
+            <div class="tag">GAME</div>
+            <h5>ファイナル3進出決定！</h5>
+            <div class="date">2024.05.15</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="img-slot light" data-slot="n3"><span class="slot-label">REPORT</span></div>
+          <div>
+            <div class="tag">REPORT</div>
+            <h5>春季練習レポート</h5>
+            <div class="date">2024.04.15</div>
+          </div>
+        </div>
+        <a href="#news" class="news-all">すべての投稿を見る&nbsp;→</a>
+      </div>
+
+      <!-- BECOME DOLAX -->
+      <div class="become" id="become">
+        <div class="ghost-do">DOLAX</div>
+        <h3>BECOME<br>DOLAX</h3>
+        <div class="lead">未経験歓迎。必要なのは本気でラクロスに向き合う意志だけ。</div>
+        <p>DOLAXは、共に高め合い、共に頂点を目指す仲間を求めています。まずは体験練習から、私たちの熱量を感じてください。</p>
+        <div class="become-btns">
+          <a href="#" class="gold">体験練習に参加する</a>
+          <a href="#" class="ghost-btn">詳細を見る</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO ARCHIVE -->
+<section class="archive-sec sec-pad" id="archive">
+  <div class="wrap">
+    <div class="archive-head">
+      <div>
+        <div class="kicker">Memories</div>
+        <h2 class="sec-title">PHOTO ARCHIVE</h2>
+      </div>
+      <div class="archive-tabs">
+        <button class="arc-tab active" onclick="filterArchive('all',this)">ALL</button>
+        <button class="arc-tab" onclick="filterArchive('2024',this)">2024</button>
+        <button class="arc-tab" onclick="filterArchive('2023',this)">2023</button>
+        <button class="arc-tab" onclick="filterArchive('2022',this)">2022</button>
+      </div>
+    </div>
+
+    <div class="archive-masonry" id="archiveMasonry">
+
+      <div class="arc-item h-tall" data-year="2024" onclick="openLightbox(0)">
+        <div class="img-slot" data-slot="arc1"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2024</div>
+          <div class="arc-caption">関西リーグ 開幕戦</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <div class="arc-item h-short" data-year="2024" onclick="openLightbox(1)">
+        <div class="img-slot" data-slot="arc2"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2024</div>
+          <div class="arc-caption">チームミーティング</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <div class="arc-item h-mid" data-year="2023" onclick="openLightbox(2)">
+        <div class="img-slot" data-slot="arc3"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2023</div>
+          <div class="arc-caption">ファイナル3 セレモニー</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <div class="arc-item h-short" data-year="2022" onclick="openLightbox(3)">
+        <div class="img-slot" data-slot="arc4"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2022</div>
+          <div class="arc-caption">春季練習 キックオフ</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <div class="arc-item h-mid" data-year="2024" onclick="openLightbox(4)">
+        <div class="img-slot" data-slot="arc5"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2024</div>
+          <div class="arc-caption">ファイナル3進出決定の瞬間</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <div class="arc-item h-tall" data-year="2023" onclick="openLightbox(5)">
+        <div class="img-slot" data-slot="arc6"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2023</div>
+          <div class="arc-caption">全日本選手権 準決勝</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <div class="arc-item h-short" data-year="2022" onclick="openLightbox(6)">
+        <div class="img-slot" data-slot="arc7"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2022</div>
+          <div class="arc-caption">OB戦 ポストシーズン</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <div class="arc-item h-mid" data-year="2024" onclick="openLightbox(7)">
+        <div class="img-slot" data-slot="arc8"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2024</div>
+          <div class="arc-caption">合宿 集合写真</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <div class="arc-item h-short" data-year="2023" onclick="openLightbox(8)">
+        <div class="img-slot" data-slot="arc9"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2023</div>
+          <div class="arc-caption">新歓練習試合</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <div class="arc-item h-tall" data-year="2022" onclick="openLightbox(9)">
+        <div class="img-slot" data-slot="arc10"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2022</div>
+          <div class="arc-caption">シーズン最終戦</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <div class="arc-item h-mid" data-year="2023" onclick="openLightbox(10)">
+        <div class="img-slot" data-slot="arc11"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2023</div>
+          <div class="arc-caption">関西リーグ 表彰式</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <div class="arc-item h-short" data-year="2024" onclick="openLightbox(11)">
+        <div class="img-slot" data-slot="arc12"><span class="slot-label">写真をドロップ</span></div>
+        <div class="arc-overlay">
+          <div class="arc-year">2024</div>
+          <div class="arc-caption">引退セレモニー</div>
+        </div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+    </div>
+
+    <div class="archive-footer">
+      <div class="arc-count">表示中 <span id="arcVisible">12</span> / <span id="arcTotal">12</span> 枚</div>
+      <a href="#" class="arc-more-btn">さらに見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lb-overlay" id="lightbox" onclick="closeLightboxOutside(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLightbox()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+      CLOSE
+    </button>
+    <button class="lb-nav prev" onclick="lbPrev()" aria-label="前へ">&#8592;</button>
+    <button class="lb-nav next" onclick="lbNext()" aria-label="次へ">&#8594;</button>
+    <div class="lb-img-placeholder" id="lbPlaceholder">NO IMAGE</div>
+    <img class="lb-img" id="lbImg" src="" alt="" style="display:none;">
+    <div class="lb-caption">
+      <span class="lb-year" id="lbYear"></span>
+      <span id="lbCaption"></span>
+    </div>
+  </div>
+</div>
+
+<!-- SPONSOR -->
+<section class="sponsor-sec sec-pad" id="sponsor">
+  <div class="wrap">
+    <div class="sponsor-inner">
+      <div class="kicker">Our Partners</div>
+      <h2 class="sec-title">SPONSORS &amp; SUPPORTERS</h2>
+      <p class="sponsor-sub">DOLAXの活動を支えてくださるスポンサー・協賛企業の皆様に、心より感謝申し上げます。</p>
+
+      <!-- GOLD TIER -->
+      <div class="sponsor-tier">
+        <div class="tier-label">GOLD SPONSOR</div>
+        <div class="sponsor-logos">
+          <div class="sponsor-logo gold-tier">
+            <div class="img-slot light" data-slot="sp-g1" style="width:100%;height:100%;">
+              <span class="slot-label">ロゴをドロップ</span>
+            </div>
+          </div>
+          <div class="sponsor-logo gold-tier">
+            <div class="img-slot light" data-slot="sp-g2" style="width:100%;height:100%;">
+              <span class="slot-label">ロゴをドロップ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SILVER TIER -->
+      <div class="sponsor-tier">
+        <div class="tier-label">SILVER SPONSOR</div>
+        <div class="sponsor-logos">
+          <div class="sponsor-logo silver-tier">
+            <div class="img-slot light" data-slot="sp-s1" style="width:100%;height:100%;">
+              <span class="slot-label">ロゴをドロップ</span>
+            </div>
+          </div>
+          <div class="sponsor-logo silver-tier">
+            <div class="img-slot light" data-slot="sp-s2" style="width:100%;height:100%;">
+              <span class="slot-label">ロゴをドロップ</span>
+            </div>
+          </div>
+          <div class="sponsor-logo silver-tier">
+            <div class="img-slot light" data-slot="sp-s3" style="width:100%;height:100%;">
+              <span class="slot-label">ロゴをドロップ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUPPORTER TIER -->
+      <div class="sponsor-tier">
+        <div class="tier-label">SUPPORTER</div>
+        <div class="sponsor-logos">
+          <div class="sponsor-logo support-tier">
+            <div class="img-slot light" data-slot="sp-t1" style="width:100%;height:100%;">
+              <span class="slot-label">ロゴ</span>
+            </div>
+          </div>
+          <div class="sponsor-logo support-tier">
+            <div class="img-slot light" data-slot="sp-t2" style="width:100%;height:100%;">
+              <span class="slot-label">ロゴ</span>
+            </div>
+          </div>
+          <div class="sponsor-logo support-tier">
+            <div class="img-slot light" data-slot="sp-t3" style="width:100%;height:100%;">
+              <span class="slot-label">ロゴ</span>
+            </div>
+          </div>
+          <div class="sponsor-logo support-tier">
+            <div class="img-slot light" data-slot="sp-t4" style="width:100%;height:100%;">
+              <span class="slot-label">ロゴ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sponsor-cta">
+        <p>DOLAXへのスポンサーシップにご興味のある企業様はお気軽にお問い合わせください。</p>
+        <a href="mailto:dolax.doshisha@gmail.com">スポンサーに申し込む →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="foot-logo"><span class="do">DO</span><span class="lax">LAX</span></div>
+        <p>同志社大学体育会男子ラクロス部</p>
+        <p>組織を愛し、社会から愛されるチームへ。</p>
+        <div class="foot-soc">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.2 2H21l-6.6 7.5L22 22h-6.3l-4.9-6.4L5.2 22H2.4l7-8L2 2h6.4l4.4 5.8L18.2 2Zm-1.1 18h1.7L7 3.8H5.2L17.1 20Z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 4.8 12 4.8 12 4.8s-7 0-8.9.6A3 3 0 0 0 1 7.5C.5 9.4.5 12 .5 12s0 2.6.5 4.5a3 3 0 0 0 2.1 2.1c1.9.6 8.9.6 8.9.6s7 0 8.9-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-4.5.5-4.5s0-2.6-.5-4.5ZM9.8 15.3V8.7l5.7 3.3-5.7 3.3Z"/>
+            </svg>
+          </a>
+          <a href="mailto:dolax.doshisha@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="M3.5 6.5 12 13l8.5-6.5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>TEAM</h4>
+        <a href="#about">About</a>
+        <a href="#history">History</a>
+        <a href="#field">Roster</a>
+        <a href="#field">Gallery</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>NEWS</h4>
+        <a href="#news">News</a>
+        <a href="#news">Game Result</a>
+        <a href="#news">Report</a>
+      </div>
+
+      <div class="foot-col foot-contact">
+        <h4>CONTACT</h4>
+        <div class="row">
+          〒602-8580 京都府京都市上京区今出川通烏丸東入<br>
+          同志社大学 今出川キャンパス
+        </div>
+        <div class="row"><b>Email</b>dolax.doshisha@gmail.com</div>
+        <div class="row"><b>Instagram</b>@dolax.doshisha</div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">© 2026 同志社大学体育会男子ラクロス部 DOLAX</div>
+</footer>
+
+<script>
+  /* ---- Drag-and-drop image slots ---- */
+  document.querySelectorAll('.img-slot').forEach(slot => {
+    slot.addEventListener('dragover', e => { e.preventDefault(); slot.classList.add('over'); });
+    slot.addEventListener('dragleave', () => slot.classList.remove('over'));
+    slot.addEventListener('drop', e => {
+      e.preventDefault();
+      slot.classList.remove('over');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) applyImage(slot, file);
+    });
+    slot.addEventListener('click', () => {
+      const inp = document.createElement('input');
+      inp.type = 'file'; inp.accept = 'image/*';
+      inp.onchange = () => { if (inp.files[0]) applyImage(slot, inp.files[0]); };
+      inp.click();
+    });
+  });
+
+  function applyImage(slot, file) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      let img = slot.querySelector('img.filled');
+      if (!img) { img = document.createElement('img'); img.className = 'filled'; slot.appendChild(img); }
+      img.src = e.target.result;
+      slot.querySelector('.slot-label') && (slot.querySelector('.slot-label').style.display = 'none');
+    };
+    reader.readAsDataURL(file);
+  }
+
+  /* ---- Photo Archive filter & lightbox ---- */
+  const arcData = [
+    { year:'2024', caption:'関西リーグ 開幕戦' },
+    { year:'2024', caption:'チームミーティング' },
+    { year:'2023', caption:'ファイナル3 セレモニー' },
+    { year:'2022', caption:'春季練習 キックオフ' },
+    { year:'2024', caption:'ファイナル3進出決定の瞬間' },
+    { year:'2023', caption:'全日本選手権 準決勝' },
+    { year:'2022', caption:'OB戦 ポストシーズン' },
+    { year:'2024', caption:'合宿 集合写真' },
+    { year:'2023', caption:'新歓練習試合' },
+    { year:'2022', caption:'シーズン最終戦' },
+    { year:'2023', caption:'関西リーグ 表彰式' },
+    { year:'2024', caption:'引退セレモニー' },
+  ];
+  let lbIndex = 0;
+
+  window.filterArchive = function(year, btn) {
+    document.querySelectorAll('.arc-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    const items = document.querySelectorAll('.arc-item');
+    let visible = 0;
+    items.forEach(item => {
+      const show = year === 'all' || item.dataset.year === year;
+      item.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    document.getElementById('arcVisible').textContent = visible;
+  };
+
+  window.openLightbox = function(idx) {
+    lbIndex = idx;
+    renderLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeLightbox = function() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  window.closeLightboxOutside = function(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  };
+  window.lbPrev = function() { lbIndex = (lbIndex - 1 + arcData.length) % arcData.length; renderLightbox(); };
+  window.lbNext = function() { lbIndex = (lbIndex + 1) % arcData.length; renderLightbox(); };
+
+  function renderLightbox() {
+    const d = arcData[lbIndex];
+    document.getElementById('lbYear').textContent = d.year;
+    document.getElementById('lbCaption').textContent = d.caption;
+    const slot = document.querySelector(`.arc-item:nth-child(${lbIndex+1}) .img-slot img.filled`);
+    const lbImg = document.getElementById('lbImg');
+    const lbPh  = document.getElementById('lbPlaceholder');
+    if (slot) {
+      lbImg.src = slot.src; lbImg.style.display = ''; lbPh.style.display = 'none';
+    } else {
+      lbImg.style.display = 'none'; lbPh.style.display = 'flex'; lbPh.textContent = d.caption;
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowLeft')  lbPrev();
+    if (e.key === 'ArrowRight') lbNext();
+    if (e.key === 'Escape')     closeLightbox();
+  });
+
+  document.getElementById('arcTotal').textContent = arcData.length;
+  document.getElementById('arcVisible').textContent = arcData.length;
+
+  /* ---- Roster position filter ---- */
+  window.filterRoster = function(pos, btn) {
+    document.querySelectorAll('.pos-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.player-card').forEach(card => {
+      card.style.display = (pos === 'all' || card.dataset.pos === pos) ? '' : 'none';
+    });
+  };
+
+  /* ---- Schedule season filter ---- */
+  window.filterSchedule = function(season, btn) {
+    document.querySelectorAll('.ssn-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#scheduleBody tr').forEach(row => {
+      row.style.display = (season === 'all' || row.dataset.season === season) ? '' : 'none';
+    });
+  };
+
+  /* ---- Hamburger menu (mobile) ---- */
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks  = document.querySelector('.nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.style.display === 'flex';
+      navLinks.style.display = open ? 'none' : 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.position = 'absolute';
+      navLinks.style.top = '74px';
+      navLinks.style.left = '0';
+      navLinks.style.right = '0';
+      navLinks.style.background = 'rgba(244,241,234,.97)';
+      navLinks.style.padding = '24px 32px';
+      navLinks.style.gap = '20px';
+      navLinks.style.borderBottom = '1px solid #e4e0d6';
+      if (open) navLinks.style.display = 'none';
+    });
+  }
+</script>
+
+</body>
+</html>
