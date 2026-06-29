@@ -8,8 +8,9 @@
       "slug": "grade4-1",
       "nameEn": "",
       "position": "AT",
-      "role": "OF sub leader",
+      "role": "OF leader",
       "school": "同志社国際高等学校",
+      "experienceSports": "剣道・ラグビー",
       "experienceSports": "",
       "comment": "@llsk__1",
       "photos": [
@@ -192,23 +193,27 @@
       "profileUrl": "",
       "photo": ""
     },
-    {
-      "name": "川手 大輔",
-      "number": "21",
-      "grade": 4,
-      "section": "player",
-      "slug": "grade4-21",
-      "nameEn": "",
-      "position": "",
-      "role": "",
-      "school": "",
-      "experienceSports": "",
-      "comment": "",
-      "photos": [
-        "",
-        "",
-        ""
-      ],
+   {
+  "name": "川手 大輔",
+  "number": "21",
+  "grade": 4,
+  "section": "player",
+  "slug": "grade4-21",
+  "nameEn": "DAISUKE KAWATE",
+  "position": "DF",
+  "role": "",
+  "school": "",
+  "faculty": "法学部",
+  "department": "政治学科",
+  "experienceSports": "バスケットボール、アルペンスキー",
+  "comment": "",
+  "photo": "",
+  "photos": [
+    "",
+    "",
+    ""
+  ]
+}
       "hometown": "",
       "height": "",
       "weight": "",
