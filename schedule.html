@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DOLAXの2026年シーズン試合日程と試合結果。関西1部リーグを中心に各カテゴリの最新スケジュールを掲載しています。">
+<title>SCHEDULE 2026 | DOLAX 同志社大学体育会男子ラクロス部</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="SCHEDULE 2026 | DOLAX 同志社大学体育会男子ラクロス部">
+<meta property="og:description" content="DOLAXの2026年シーズン試合日程と試合結果。関西1部リーグを中心に各カテゴリの最新スケジュールを掲載しています。">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="DOLAX">
+<meta property="og:url" content="https://dolax-lacrosse.jp/schedule.html">
+<meta property="og:image" content="https://dolax-lacrosse.jp/assets/hero1.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SCHEDULE 2026 | DOLAX 同志社大学体育会男子ラクロス部">
+<meta name="twitter:description" content="DOLAXの2026年シーズン試合日程と試合結果。関西1部リーグを中心に各カテゴリの最新スケジュールを掲載しています。">
+<link rel="canonical" href="https://dolax-lacrosse.jp/schedule.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Montserrat:ital,wght@0,700;1,700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/schedule.css">
+<link rel="stylesheet" href="assets/dolax-motion.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header"></header>
+
+<div class="page-title-row">
+  <div class="wrap page-title-inner">
+    <h1 class="page-title-en">SCHEDULE</h1>
+    <span class="page-title-ja">試合情報</span>
+  </div>
+</div>
+
+<!-- YEAR BAR -->
+<div class="year-bar">
+  <div class="wrap">
+    <div class="year-bar-inner">
+      <span class="year-label">SEASON</span>
+      <div class="year-tabs">
+        <!-- YEARLY UPDATE: 新シーズン開始時に↓の行を追加し active を移す -->
+        <!-- 例: <button class="year-btn" data-year="2027">2027</button> -->
+        <button class="year-btn active" data-year="2026">2026</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORY TABS -->
+<div class="cat-wrap">
+  <div class="wrap">
+    <div class="cat-tabs" role="tablist">
+      <button class="cat-btn active" role="tab" data-cat="all">
+        <span class="cat-en">ALL</span>
+        <span class="cat-ja">全チーム</span>
+      </button>
+      <button class="cat-btn" role="tab" data-cat="a">
+        <span class="cat-en">A TEAM</span>
+        <span class="cat-ja">Aチーム</span>
+      </button>
+      <button class="cat-btn" role="tab" data-cat="b">
+        <span class="cat-en">B TEAM</span>
+        <span class="cat-ja">Bチーム</span>
+      </button>
+      <button class="cat-btn" role="tab" data-cat="c">
+        <span class="cat-en">C TEAM</span>
+        <span class="cat-ja">Cチーム</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- GAME MAIN -->
+<main class="game-main">
+  <div class="wrap">
+
+    <!-- ── SCHEDULED ── -->
+    <div class="sec-divider">
+      <span class="sec-divider-en">SCHEDULED</span>
+      <span class="sec-divider-ja">試合予定</span>
+      <div class="sec-divider-line"></div>
+    </div>
+
+    <!-- ▼▼ 試合予定カード一覧 ▼▼ -->
+    <!-- 編集箇所：data/schedule.json を編集してください -->
+    <div id="scheduled-list">
+      <!-- data/schedule.json から render-schedule.js が自動生成 -->
+    </div>
+
+    <div class="placeholder-card" id="msg-scheduled">
+      <div class="placeholder-ja">試合予定は決定次第掲載します。</div>
+    </div>
+
+    <!-- ── RESULTS ── -->
+    <div class="sec-divider">
+      <span class="sec-divider-en">RESULTS</span>
+      <span class="sec-divider-ja">試合結果</span>
+      <div class="sec-divider-line"></div>
+    </div>
+
+    <!-- ▼▼ 試合結果カード一覧 ▼▼ -->
+    <!-- 編集箇所：data/schedule.json を編集してください -->
+    <div id="results-list">
+      <!-- data/schedule.json から render-schedule.js が自動生成 -->
+    </div>
+
+    <div class="placeholder-card is-hidden" id="msg-result">
+      <div class="placeholder-ja">試合結果は公式Instagram確認後に掲載します。</div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer id="site-footer"></footer>
+
+<script src="assets/js/schedule-filter.js"></script>
+<script src="assets/js/render-schedule.js"></script>
+<script src="assets/js/render-layout.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/dolax-motion.js" defer></script>
+</body>
+</html>

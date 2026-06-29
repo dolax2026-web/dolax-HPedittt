@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="同志社大学体育会男子ラクロス部DOLAX公式サイト。関西1部リーグで挑戦する130名以上のチームの試合日程・選手情報・最新ニュースを掲載しています。">
+<title>DOLAX — 同志社大学体育会男子ラクロス部 公式サイト</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="DOLAX — 同志社大学体育会男子ラクロス部 公式サイト">
+<meta property="og:description" content="同志社大学体育会男子ラクロス部DOLAX公式サイト。関西1部リーグで挑戦する130名以上のチームの試合日程・選手情報・最新ニュースを掲載しています。">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="DOLAX">
+<meta property="og:url" content="https://dolax-lacrosse.jp/">
+<meta property="og:image" content="https://dolax-lacrosse.jp/assets/hero1.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DOLAX — 同志社大学体育会男子ラクロス部 公式サイト">
+<meta name="twitter:description" content="同志社大学体育会男子ラクロス部DOLAX公式サイト。関西1部リーグで挑戦する130名以上のチームの試合日程・選手情報・最新ニュースを掲載しています。">
+<link rel="canonical" href="https://dolax-lacrosse.jp/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Montserrat:ital,wght@0,700;1,700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/home.css">
+<link rel="stylesheet" href="assets/css/home-hero.css">
+<link rel="stylesheet" href="assets/css/home-game.css">
+<link rel="stylesheet" href="assets/css/home-news.css">
+<link rel="stylesheet" href="assets/css/home-archive.css">
+<link rel="stylesheet" href="assets/css/home-sponsors.css">
+<link rel="stylesheet" href="assets/css/home-youtube.css">
+  <link rel="stylesheet" href="assets/dolax-motion.css">
+</head>
+<body>
+<a href="#main-content" class="skip-link">コンテンツにスキップ</a>
+
+<!-- INTRO OVERLAY -->
+<div id="intro-overlay" aria-hidden="true">
+  <canvas id="intro-canvas"></canvas>
+  <div class="intro-conv"></div>
+  <div class="intro-conv"></div>
+  <div class="intro-conv"></div>
+  <div class="intro-conv"></div>
+  <div class="intro-conv"></div>
+  <div class="intro-stage">
+    <div class="intro-logo-wrap">
+      <div class="intro-glow"></div>
+      <div class="intro-corners">
+        <div class="intro-corner intro-corner-tl"></div>
+        <div class="intro-corner intro-corner-tr"></div>
+        <div class="intro-corner intro-corner-bl"></div>
+        <div class="intro-corner intro-corner-br"></div>
+      </div>
+      <img class="intro-logo-img" src="assets/du-logo.png" alt="DOLAX" decoding="async">
+      <div class="intro-scanline"></div>
+      <div class="intro-flash"></div>
+    </div>
+    <div class="intro-welcome-main">WELCOME TO DOLAX</div>
+    <div class="intro-sep-wrap">
+      <span class="isep-line"></span>
+      <span class="isep-diamond"></span>
+      <span class="isep-line"></span>
+    </div>
+    <div class="intro-welcome-sub">DOSHISHA MEN'S LACROSSE</div>
+    <div class="intro-tagline">同志社大学体育会男子ラクロス部</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="site-header"></header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+
+  <!-- ① 無限ループスライダー（背景レイヤー） -->
+  <div class="hero-slider-outer">
+    <div class="hero-slider-track" id="heroSliderTrack">
+      <div class="hero-slide"><div class="img-slot" data-slot="hs1"><picture><source srcset="assets/hero1.webp" type="image/webp"><img src="assets/hero1.webp" alt="DOLAX ヘルメット" class="filled" loading="eager" decoding="async"></picture><span class="slot-label">写真 1</span></div></div>
+      <div class="hero-slide"><div class="img-slot" data-slot="hs2"><picture><source srcset="assets/hero2.webp" type="image/webp"><img src="assets/hero2.webp" alt="DOLAX チームハドル" class="filled" loading="eager" decoding="async"></picture><span class="slot-label">写真 2</span></div></div>
+      <div class="hero-slide"><div class="img-slot" data-slot="hs3"><picture><source srcset="assets/hero3.webp" type="image/webp"><img src="assets/hero3.webp" alt="DOLAX 入替戦" class="filled" loading="eager" decoding="async"></picture><span class="slot-label">写真 3</span></div></div>
+    </div>
+    <!-- ② グラデーションオーバーレイ（文字可読性） -->
+    <div class="hero-slider-overlay"></div>
+  </div>
+
+  <!-- ③ テキストコンテンツ（スライダーの上） -->
+  <div class="hero-body">
+    <div class="wrap hero-wrap">
+      <div class="hero-left">
+        <div class="eyebrow"><span class="tick"></span>KANSAI DIVISION 1<span class="jp">｜関西1部リーグ</span></div>
+        <h1>DOSHISHA UNIVERSITY<br>MEN'S LACROSSE</h1>
+        <div class="hero-univ">同志社大学体育会男子ラクロス部</div>
+        <div class="hero-season-tag" id="heroSeasonTag">REDEEM 2026</div>
+        <div class="hero-btns">
+          <a href="schedule.html" class="hbtn solid">試合日程を見る</a>
+          <a href="#about" class="hbtn ghost">チームを知る</a>
+        </div>
+        <a href="sponsors.html" class="hero-sponsor-link">スポンサー・パートナーについて&thinsp;→</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-smoke-overlay"></div>
+  <div class="scroll-ind"><span>Scroll</span><div class="ar"></div></div>
+</section>
+
+<!-- STATS -->
+<section class="stats" id="main-content">
+  <div class="wrap">
+    <!-- data/stats.json teamStats から render-season.js が自動生成 -->
+    <div class="stats-grid" id="statsGrid">
+      <div class="stat"><div class="num">1部</div><div class="lab">関西リーグ所属</div></div>
+      <div class="stat"><div class="num"><span class="js-count-up" data-target="130">130</span><small>+</small></div><div class="lab">部員数</div></div>
+      <div class="stat"><div class="num"><span class="js-count-up" data-target="6">6</span><small>回</small></div><div class="lab">関西準優勝</div></div>
+      <div class="stat"><div class="num">POL<small> 獲得</small></div><div class="lab">今季目標</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT GAME / LATEST RESULT -->
+<!-- YEARLY UPDATE: 試合情報を更新する -->
+<section class="match-sec">
+  <div class="wrap">
+    <div class="match-grid">
+
+      <!-- ▼ NEXT GAME ▼ -->
+      <div class="mc mc--next">
+        <!-- 1. ラベル -->
+        <div class="mc-label">NEXT GAME</div>
+        <!-- 2. 日付・チームバッジ（data/schedule.json から render-schedule.js が自動更新） -->
+        <div class="mc-meta" id="ngMeta">
+          <span class="mc-date">2026.7.5 Sun</span>
+          <span class="mc-cat">B TEAM</span>
+        </div>
+        <!-- 3. 対戦情報 -->
+        <div class="mc-matchup" id="ngMatchup">
+          <div class="mc-team mc-team--home">同志社大学</div>
+          <div class="mc-center">
+            <span class="mc-vs-text">VS</span>
+          </div>
+          <div class="mc-team mc-team--away">近畿大学B</div>
+        </div>
+        <!-- 4. 補足情報（時間・場所） -->
+        <div class="mc-sub" id="ngSub">
+          <div class="mc-detail">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            10:45 FO
+          </div>
+          <div class="mc-detail">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            二色球技場
+          </div>
+        </div>
+        <!-- 5. ボタン -->
+        <a href="schedule.html" class="mc-btn btn-primary btn-wide">SCHEDULE を見る</a>
+      </div>
+
+      <!-- ▼ LATEST RESULT ▼ -->
+      <div class="mc mc--result">
+        <!-- 1. ラベル -->
+        <div class="mc-label">LATEST RESULT</div>
+        <!-- 2. 日付・チームバッジ（data/schedule.json から render-schedule.js が自動更新） -->
+        <div class="mc-meta" id="lrMeta">
+          <span class="mc-date">2026.6.13 Sat</span>
+          <span class="mc-cat">C TEAM</span>
+        </div>
+        <!-- 3. スコア -->
+        <div class="mc-matchup" id="lrMatchup">
+          <div class="mc-team mc-team--home">同志社大学</div>
+          <div class="mc-center">
+            <div class="mc-score">
+              <span class="mc-score-num">1</span>
+              <span class="mc-score-sep">—</span>
+              <span class="mc-score-num">6</span>
+            </div>
+          </div>
+          <div class="mc-team mc-team--away">京都大学B</div>
+        </div>
+        <!-- 4. 補足情報（WIN/LOSE バッジ） -->
+        <div class="mc-sub" id="lrSub">
+          <span class="mc-result-badge mc-result-badge--lose">LOSE</span>
+        </div>
+        <!-- 5. ボタン -->
+        <a href="schedule.html" class="mc-btn btn-primary btn-wide">試合結果を見る</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- YOUTUBE -->
+<section class="yt-sec sec-pad">
+  <div class="wrap">
+
+    <div class="yt-head">
+      <div class="kicker">Official Media</div>
+      <h2 class="sec-title">OFFICIAL YOUTUBE CHANNEL</h2>
+      <p class="yt-head-ja">同志社大学男子ラクロス部 公式YouTube</p>
+      <div class="sec-divider"></div>
+    </div>
+
+    <div class="yt-card">
+      <!-- EDIT: 動画を差し替える場合は src の動画IDを更新してください -->
+      <div class="yt-embed-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/hudebtJjYEs"
+          title="同志社大学男子ラクロス部 公式YouTube動画"
+          frameborder="0"
+          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+      <div class="yt-card-body">
+        <p class="yt-desc">試合・練習・チームの雰囲気を映像で発信しています。<br>DOLAXの熱量と挑戦をぜひご覧ください。</p>
+        <a href="https://www.youtube.com/@Doshisha_mlax" class="btn-primary yt-cta" target="_blank" rel="noopener noreferrer">公式YouTubeを見る</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec-pad" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-mid">
+        <div class="kicker">About Us</div>
+        <h2 class="sec-title">PLAY WITH PRIDE</h2>
+        <!-- 編集：ABOUTキャッチコピー -->
+        <div class="tagline2">本気の先に、最高の景色がある。</div>
+        <!-- 編集：ABOUT本文1段落目 -->
+        <p>1989年に創部した同志社大学体育会男子ラクロス部。「組織を愛し、社会から愛される」を理念に掲げ、関西1部リーグの舞台で競技力と人間力の両輪を磨き続けてきた。</p>
+        <!-- data/season.json indexAboutP から自動更新 -->
+        <p id="aboutGoalP">DOLAXは関西制覇とPOL獲得を掲げ、新たな歴史へ挑む。</p>
+        <a href="about.html" class="btn-primary">DOLAXをもっと知る &nbsp;→</a>
+      </div>
+      <!-- ================================================================
+           YEARLY UPDATE: CURRENT SEASON カード
+           毎年更新が必要な箇所はここだけ（トップページで1か所に集約）
+           ① ssn → 年度（例: 2027 Season）
+           ② assets/season/slogan-logo.png → スローガンロゴ画像を差し替え
+           ③ season-goals → 今季目標
+           ================================================================ -->
+      <div class="season-card">
+        <!-- data/season.json から render-season.js が自動更新 -->
+        <div class="ssn" id="seasonCardYear">2026 Season</div>
+        <img src="assets/season/slogan-logo.png" alt="Season Slogan Logo" class="season-box-logo" loading="lazy" decoding="async">
+        <div class="season-goals-label">Season Goals</div>
+        <div class="season-goals" id="seasonGoalsList">
+          <div class="goal">関西制覇</div>
+          <div class="goal">POL 獲得</div>
+        </div>
+      </div>
+    </div>
+    <!-- YEARLY UPDATE: season slogan logo
+         assets/season/slogan-logo.png を新しい画像に差し替えるだけで更新できます
+         画像が未配置の場合は自動で非表示になります -->
+  </div>
+</section>
+
+<!-- ROSTER -->
+<!-- NEWS & UPDATES -->
+<section class="news-sec sec-pad" id="news">
+  <div class="wrap">
+    <div class="news-sec-head">
+      <div class="kicker">Latest</div>
+      <h2 class="sec-title">NEWS &amp; UPDATES</h2>
+    </div>
+    <div class="news-list" id="indexNewsList">
+      <!-- data/blog.json から自動生成（最新3件） -->
+    </div>
+    <div class="news-more">
+      <a href="news.html" class="news-more-link">すべての投稿を見る&nbsp;→</a>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO ARCHIVE -->
+<section class="archive-sec sec-pad" id="archive">
+  <div class="wrap">
+    <div class="archive-head">
+      <div><div class="kicker">Memories</div><h2 class="sec-title">PHOTO ARCHIVE</h2></div>
+    </div>
+
+    <!-- EDIT: archive photo gallery
+         写真を差し替える場合は assets/archive/archive-01.jpg〜07.jpg を更新してください
+         archive-lightbox.js の arcData 配列と枚数を合わせること -->
+    <div class="arc-grid" id="arcGrid">
+
+      <!-- Row 1: wide + regular -->
+      <!-- EDIT: 写真を差し替える場合は assets/archive/archive-01〜10.jpg を更新してください -->
+      <div class="arc-grid-item wide" data-lb-index="0">
+        <img src="assets/archive/archive-01.jpg" alt="Photo 1" loading="lazy" decoding="async" onerror="arcImgFail(this)">
+        <div class="arc-overlay"></div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+      <div class="arc-grid-item" data-lb-index="1">
+        <img src="assets/archive/archive-02.jpg" alt="Photo 2" loading="lazy" decoding="async" onerror="arcImgFail(this)">
+        <div class="arc-overlay"></div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <!-- Row 2: 3 equal -->
+      <div class="arc-grid-item" data-lb-index="2">
+        <img src="assets/archive/archive-03.jpg" alt="Photo 3" loading="lazy" decoding="async" onerror="arcImgFail(this)">
+        <div class="arc-overlay"></div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+      <div class="arc-grid-item" data-lb-index="3">
+        <img src="assets/archive/archive-04.jpg" alt="Photo 4" loading="lazy" decoding="async" onerror="arcImgFail(this)">
+        <div class="arc-overlay"></div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+      <div class="arc-grid-item" data-lb-index="4">
+        <img src="assets/archive/archive-05.jpg" alt="Photo 5" loading="lazy" decoding="async" onerror="arcImgFail(this)">
+        <div class="arc-overlay"></div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+      <!-- Row 3: regular + wide -->
+      <div class="arc-grid-item" data-lb-index="5">
+        <img src="assets/archive/archive-06.jpg" alt="Photo 6" loading="lazy" decoding="async" onerror="arcImgFail(this)">
+        <div class="arc-overlay"></div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+      <div class="arc-grid-item wide" data-lb-index="6">
+        <img src="assets/archive/archive-07.jpg" alt="Photo 7" loading="lazy" decoding="async" onerror="arcImgFail(this)">
+        <div class="arc-overlay"></div>
+        <div class="arc-expand"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4M14 2l-6 6M6 14H2v-4M2 14l6-6"/></svg></div>
+      </div>
+
+
+    </div>
+
+    <!-- EDIT: archive photo image — 写真なし時のCOMING SOON表示 -->
+    <!-- 写真を追加する場合は assets/archive/archive-01.jpg〜10.jpg を配置してください -->
+    <div id="arcComingSoon" class="is-hidden">写真は順次追加予定です。</div>
+
+    </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lb-overlay" id="lightbox">
+  <div class="lb-inner">
+    <button class="lb-close">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+      CLOSE
+    </button>
+    <button class="lb-nav prev">&#8592;</button>
+    <button class="lb-nav next">&#8594;</button>
+    <div class="lb-img-placeholder" id="lbPlaceholder"></div>
+    <img class="lb-img is-hidden" id="lbImg" src="" alt="">
+    <div class="lb-caption is-hidden"><span class="lb-year" id="lbYear"></span></div>
+  </div>
+</div>
+
+<!-- PARTNER -->
+<section class="partner-sec sec-pad" id="partner">
+  <div class="wrap">
+
+    <!-- イントロ -->
+    <div class="partner-intro">
+      <div class="kicker">Partnership</div>
+      <h2 class="sec-title">PARTNER WITH DOLAX</h2>
+      <p class="partner-jp">共に挑戦を支えるパートナーへ</p>
+      <p class="partner-lead">DOLAXは、競技結果だけでなく、日々の努力、仲間との成長、支えてくださる方々への感謝を大切にしながら、応援されるチームを目指しています。<br>単なる広告掲載ではなく、学生の挑戦を共に支え、企業・団体様と新たな価値をつくるパートナーシップを大切にしています。</p>
+    </div>
+
+    <!-- data/stats.json partnerStats から render-season.js が自動生成 -->
+    <div class="partner-stats" id="partnerStats">
+      <div class="partner-stat">
+        <div class="ps-num">20<small>+</small></div>
+        <div class="ps-lab">年間試合数</div>
+        <div class="ps-en">ANNUAL GAMES</div>
+      </div>
+      <div class="partner-stat">
+        <div class="ps-num"><small>約</small>1,800<small>人</small></div>
+        <div class="ps-lab">年間来場者数</div>
+        <div class="ps-en">ANNUAL VISITORS</div>
+      </div>
+      <div class="partner-stat">
+        <div class="ps-num">3,700<small>+</small></div>
+        <div class="ps-lab">SNSフォロワー</div>
+        <div class="ps-en">FOLLOWERS</div>
+      </div>
+      <div class="partner-stat">
+        <div class="ps-num">5<small>社</small></div>
+        <div class="ps-lab">スポンサー企業</div>
+        <div class="ps-en">PARTNERS</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="partner-cta">
+      <p class="partner-cta-lead">スポンサー・パートナーに関するお問い合わせは、いつでもお気軽にどうぞ。</p>
+      <a href="sponsors.html" class="btn-primary partner-btn">スポンサー詳細・お問い合わせ</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="site-footer"></footer>
+
+  <script src="assets/js/intro.js"></script>
+  <script src="assets/js/hero-slider.js"></script>
+  <script src="assets/js/archive-lightbox.js"></script>
+  <script src="assets/js/render-blog.js"></script>
+  <script src="assets/js/render-layout.js"></script>
+  <script src="assets/js/render-season.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/count-up.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="assets/js/gsap-motion.js"></script>
+  <script src="assets/dolax-motion.js" defer></script>
+</body>
+</html>
