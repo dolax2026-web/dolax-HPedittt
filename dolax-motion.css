@@ -1,0 +1,222 @@
+/* ============================================================
+   DOLAX MOTION SYSTEM — dolax-motion.css
+   スクロール連動アニメーション・共通ホバー・モーション定義
+   ============================================================ */
+
+/* ── Scroll reveal ── */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.62s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.62s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger delays (data-delay="0"~"5") */
+.reveal-up[data-delay="0"] { transition-delay:   0ms; }
+.reveal-up[data-delay="1"] { transition-delay:  80ms; }
+.reveal-up[data-delay="2"] { transition-delay: 160ms; }
+.reveal-up[data-delay="3"] { transition-delay: 240ms; }
+.reveal-up[data-delay="4"] { transition-delay: 320ms; }
+.reveal-up[data-delay="5"] { transition-delay: 400ms; }
+
+/* ── Page title entrance (.page-enter は JS で .page-title-row に自動付与) ── */
+.page-enter .page-title-en {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: dxPTEn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.04s forwards;
+}
+.page-enter .page-title-ja {
+  opacity: 0;
+  animation: dxPTSub 0.4s ease 0.28s forwards;
+}
+@keyframes dxPTEn  { to { opacity: 1; transform: none; } }
+@keyframes dxPTSub { to { opacity: 1; } }
+
+/* ── NEWS row (index.html) ── */
+a.news-row {
+  transition: background 0.22s, padding-left 0.22s, box-shadow 0.22s;
+}
+a.news-row:hover {
+  background: rgba(194, 144, 47, 0.07);
+  padding-left: 8px;
+  box-shadow: inset 3px 0 0 var(--gold, #c2902f);
+}
+a.news-row .nr-arr {
+  transition: transform 0.22s;
+  display: inline-block;
+}
+a.news-row:hover .nr-arr {
+  transform: translateX(5px);
+}
+
+/* ── NEWS card full (news.html) ── */
+.news-card-full {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+.news-card-full:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 44px rgba(20, 35, 63, 0.12);
+}
+.news-card-full .nc-link {
+  transition: letter-spacing 0.2s, color 0.2s;
+}
+.news-card-full:hover .nc-link {
+  letter-spacing: 0.06em;
+}
+
+/* ── Player card (roster.html — ::after gold line already exists inline) ── */
+a.player-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+a.player-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(20, 35, 63, 0.15);
+}
+a.player-card .player-num {
+  transition: color 0.22s;
+}
+a.player-card:hover .player-num {
+  color: var(--gold, #c2902f);
+}
+
+/* ── Menu card / sponsor card (sponsors.html) ── */
+.menu-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(20, 35, 63, 0.12);
+}
+
+/* ── Stat card ── */
+.stat-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(20, 35, 63, 0.12);
+}
+
+/* ── Season card (index about section) ── */
+.season-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.season-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 2px var(--gold, #c2902f),
+              0 16px 48px rgba(194, 144, 47, 0.16);
+}
+
+/* ── Schedule cards ── */
+.sched-card,
+.game-card {
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease,
+              opacity 0.18s ease;
+}
+.sched-card:hover,
+.game-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(20, 35, 63, 0.1);
+}
+
+/* Schedule tab fade */
+.sched-fade-out {
+  opacity: 0 !important;
+  transform: translateY(4px) !important;
+}
+@keyframes dxSchedIn {
+  from { opacity: 0; transform: translateY(7px); }
+  to   { opacity: 1; transform: none; }
+}
+.sched-fade-in {
+  animation: dxSchedIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── VCard (index stats/vcard) ── */
+.vcard {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s ease;
+}
+.vcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(20, 35, 63, 0.12);
+}
+
+/* ── Partner btn (sponsor logos) ── */
+.partner-btn {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.2s;
+}
+.partner-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(20, 35, 63, 0.12);
+  opacity: 0.85;
+}
+
+/* ── Intro overlay: GSAP 制御時は home.css の CSS アニメーションを無効化 ── */
+/* .gsap-intro クラスは intro.js が同期的に付与するため、CSS アニメーション開始前に適用される */
+#intro-overlay.gsap-intro {
+  transition: none !important;
+}
+#intro-overlay.gsap-intro.intro-exit {
+  opacity: 1 !important;
+  transform: none !important;
+}
+#intro-overlay.gsap-intro #intro-canvas    { animation: none !important; }
+#intro-overlay.gsap-intro .intro-conv      { animation: none !important; }
+#intro-overlay.gsap-intro .intro-glow      { animation: none !important; }
+#intro-overlay.gsap-intro .intro-corner    { animation: none !important; }
+#intro-overlay.gsap-intro .intro-logo-img  { animation: none !important; }
+#intro-overlay.gsap-intro .intro-scanline  { animation: none !important; }
+#intro-overlay.gsap-intro .intro-flash     { animation: none !important; }
+#intro-overlay.gsap-intro .intro-welcome-main { animation: none !important; }
+#intro-overlay.gsap-intro .intro-sep-wrap  { animation: none !important; }
+#intro-overlay.gsap-intro .intro-welcome-sub  { animation: none !important; }
+#intro-overlay.gsap-intro .intro-tagline   { animation: none !important; }
+
+/* 文字単位のスタッガーアニメーション用 span */
+.intro-char {
+  display: inline-block;
+}
+.intro-char--sp {
+  display: inline-block;
+  width: 0.38em;
+}
+
+/* ── prefers-reduced-motion: アニメーション全OFF ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .page-enter .page-title-en,
+  .page-enter .page-title-ja {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  a.news-row,
+  .news-card-full,
+  a.player-card,
+  .menu-card,
+  .stat-card,
+  .season-card,
+  .sched-card,
+  .game-card,
+  .vcard,
+  .partner-btn,
+  a.player-card .player-num {
+    transition: none !important;
+  }
+  .sched-fade-in { animation: none !important; }
+}

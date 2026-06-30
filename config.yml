@@ -1,0 +1,184 @@
+# ================================================================
+# Decap CMS 設定ファイル
+# Netlify にデプロイ後、/admin/ から管理画面にアクセスできます。
+# backend の repo を実際の GitHub リポジトリ名に変更してください。
+# ================================================================
+
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/dolax-website   # ← 変更必須
+  branch: main
+  base_url: https://api.netlify.com           # Netlify Identity を使う場合
+  auth_endpoint: auth
+
+# 管理画面の言語
+locale: ja
+
+# 画像アップロード先（デフォルト）
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+# ================================================================
+# コレクション定義
+# ================================================================
+
+collections:
+
+  # ── ブログ記事 ──────────────────────────────────────────────
+  - name: blog
+    label: ブログ・ニュース
+    file: data/blog.json
+    description: "ブログ記事・ニュースを管理します。date は新しい順に並べてください。"
+    fields:
+      - name: posts
+        label: 記事一覧
+        widget: list
+        summary: "{{fields.date}} / {{fields.title}}"
+        fields:
+          - { label: スラッグ(URL用),   name: slug,      widget: string,  hint: "半角英数字とハイフンのみ（例: pre-league-kawate）" }
+          - { label: 日付,              name: date,      widget: string,  hint: "YYYY.MM.DD 形式（例: 2026.06.18）" }
+          - label: カテゴリー
+            name: category
+            widget: select
+            options:
+              - { label: "ブログ",         value: "BLOG" }
+              - { label: "ニュース",       value: "NEWS" }
+              - { label: "試合レポート",   value: "REPORT" }
+              - { label: "試合速報",       value: "GAME" }
+          - { label: タイトル,           name: title,     widget: string }
+          - { label: 著者名（漢字）,     name: author,    widget: string,  required: false }
+          - { label: 著者名（ローマ字）, name: authorEn,  widget: string,  required: false }
+          - { label: 背番号,             name: number,    widget: string,  required: false, hint: "例: #21" }
+          - { label: ポジション,         name: role,      widget: string,  required: false }
+          - { label: 学年,               name: grade,     widget: string,  required: false, hint: "例: 4回生" }
+          - { label: 出身校,             name: school,    widget: string,  required: false }
+          - { label: 概要文,             name: excerpt,   widget: text }
+          - { label: サムネイル画像,     name: thumbnail, widget: image,   required: false, allow_multiple: false }
+          - name: body
+            label: 本文（段落ごとに入力）
+            widget: list
+            field: { label: 段落, name: paragraph, widget: text }
+
+  # ── 試合日程・結果 ──────────────────────────────────────────
+  - name: schedule
+    label: 試合日程・結果
+    file: data/schedule.json
+    description: "試合の予定・結果を管理します。"
+    fields:
+      - name: matches
+        label: 試合一覧
+        widget: list
+        summary: "{{fields.date}} / {{fields.team | upper}} TEAM vs {{fields.opponent}}"
+        fields:
+          - { label: ID（重複不可）,     name: id,         widget: string, hint: "例: 2026-a-ritsumeikan" }
+          - { label: シーズン年,         name: year,       widget: string, default: "2026" }
+          - label: チーム
+            name: team
+            widget: select
+            options:
+              - { label: "A TEAM", value: "a" }
+              - { label: "B TEAM", value: "b" }
+              - { label: "C TEAM", value: "c" }
+          - label: 種別
+            name: type
+            widget: select
+            options:
+              - { label: "試合予定", value: "scheduled" }
+              - { label: "試合結果", value: "result" }
+          - { label: 日付,               name: date,       widget: string, hint: "YYYY.M.D 形式（例: 2026.7.5）" }
+          - label: 曜日
+            name: dayOfWeek
+            widget: select
+            options: [Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+          - { label: 試合開始時刻,       name: time,       widget: string, required: false, hint: "例: 10:45 FO" }
+          - { label: 会場,               name: venue,      widget: string, required: false }
+          - { label: 大会名,             name: tournament, widget: string, required: false }
+          - { label: 対戦相手,           name: opponent,   widget: string }
+          - { label: 自チーム得点,       name: homeScore,  widget: number, required: false, value_type: int }
+          - { label: 相手チーム得点,     name: awayScore,  widget: number, required: false, value_type: int }
+          - label: 試合結果
+            name: result
+            widget: select
+            required: false
+            options:
+              - { label: "未確定",  value: "" }
+              - { label: "勝利",    value: "win" }
+              - { label: "敗北",    value: "lose" }
+              - { label: "引き分け", value: "draw" }
+          - { label: Instagram投稿URL,   name: instagramUrl, widget: string, required: false }
+
+  # ── ロスター（選手一覧） ──────────────────────────────────────
+  - name: roster
+    label: ロスター（選手・スタッフ）
+    file: data/players.json
+    description: "選手・スタッフ情報を管理します。写真は assets/uploads/players/ に配置（例: kawate-daisuke.jpg）。"
+    fields:
+      - name: players
+        label: 選手・スタッフ一覧
+        widget: list
+        summary: "{{fields.grade}}回生 / {{fields.name}} {{fields.nameEn}}"
+        fields:
+          # ── 基本情報 ──
+          - { label: 氏名（漢字）,       name: name,         widget: string }
+          - { label: 氏名（ローマ字）,   name: nameEn,       widget: string,  required: false, hint: "例: Daisuke Kawate" }
+          - { label: 背番号,             name: number,       widget: string,  required: false, hint: "数字のみ（例: 21）。1回生・スタッフは空欄" }
+          - label: 学年
+            name: grade
+            widget: select
+            options:
+              - { label: "4回生", value: 4 }
+              - { label: "3回生", value: 3 }
+              - { label: "2回生", value: 2 }
+              - { label: "1回生", value: 1 }
+          - label: 区分
+            name: section
+            widget: select
+            options:
+              - { label: "選手",    value: "player" }
+              - { label: "スタッフ", value: "staff" }
+              - { label: "コーチ",  value: "coach" }
+          - label: スタッフ役職（スタッフ・コーチのみ）
+            name: staffRole
+            widget: select
+            required: false
+            options:
+              - { label: "主将（C）", value: "C" }
+              - { label: "AS",        value: "AS" }
+              - { label: "MG",        value: "MG" }
+              - { label: "TR",        value: "TR" }
+              - { label: "HC",        value: "HC" }
+              - { label: "AC",        value: "AC" }
+          - { label: 役割バッジ（選手のみ）, name: role,      widget: string,  required: false, hint: "例: DF LEADER / CAPTAIN" }
+          # ── 選手プロフィール ──
+          - label: ポジション（選手のみ）
+            name: position
+            widget: select
+            required: false
+            options:
+              - { label: "AT（アタック）",       value: "AT" }
+              - { label: "MF（ミッドフィルダー）", value: "MF" }
+              - { label: "DF（ディフェンス）",    value: "DF" }
+              - { label: "G（ゴーリー）",         value: "G" }
+          - { label: 出身校,             name: school,       widget: string,  required: false, hint: "例: 同志社高校" }
+          - { label: 出身地,             name: hometown,     widget: string,  required: false, hint: "例: 大阪府" }
+          - { label: 身長（cm）,         name: height,       widget: string,  required: false, hint: "例: 175" }
+          - { label: 体重（kg）,         name: weight,       widget: string,  required: false, hint: "例: 68" }
+          - label: 利き手
+            name: handedness
+            widget: select
+            required: false
+            options:
+              - { label: "右",  value: "右" }
+              - { label: "左",  value: "左" }
+              - { label: "両",  value: "両" }
+          - { label: コメント,           name: comment,      widget: text,    required: false, hint: "選手コメント・意気込みなど" }
+          - { label: プロフィールURL,    name: profileUrl,   widget: string,  required: false, hint: "個人SNSや詳細ページのURL" }
+          # ── 写真（assets/uploads/players/ に配置） ──
+          - label: 写真
+            name: photo
+            widget: image
+            required: false
+            allow_multiple: false
+            media_folder: /assets/uploads/players
+            public_folder: /assets/uploads/players
+            hint: "ファイル名は小文字英語とハイフンで統一（例: kawate-daisuke.jpg）"
